@@ -10,7 +10,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-boot.parent.version>1.3.8.RELEASE</spring-boot.parent.version>
     </properties>
 
     <dependencies>
@@ -37,7 +36,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${spring-boot.parent.version}</version>
+        <version>1.3.8.RELEASE</version>
     </parent>
 
     <!-- Package as an executable jar -->
