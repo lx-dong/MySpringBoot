@@ -1,5 +1,6 @@
-package com.china317.myspringboot.controller;
+package com.china317.myspringboot.web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.boot.autoconfigure.web.DefaultErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
@@ -19,12 +20,13 @@ import java.util.Map;
 @Controller
 @RequestMapping("${server.error.path:${error.path:/error}}")
 public class MyErrorController extends BasicErrorController{
-    public MyErrorController(){
-        super(new DefaultErrorAttributes(),new ErrorProperties());
+
+    @Autowired
+    public MyErrorController(ErrorAttributes errorAttributes){
+        super(errorAttributes,new ErrorProperties());
+        System.out.println("init MyErrorController()");
     }
-    public MyErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties){
-        super(errorAttributes, errorProperties);
-    }
+
 
     @RequestMapping(produces = com.china317.myspringboot.util.MediaType.JSON_UTF_8)
     public ModelAndView errorHtml(HttpServletRequest request,
@@ -32,6 +34,7 @@ public class MyErrorController extends BasicErrorController{
         response.setStatus(getStatus(request).value());
         Map<String, Object> model = getErrorAttributes(request,
                 isIncludeStackTrace(request, MediaType.TEXT_HTML));
+        System.out.println("errorHtml --model=" + model);
         return new ModelAndView("error", model);
     }
 }

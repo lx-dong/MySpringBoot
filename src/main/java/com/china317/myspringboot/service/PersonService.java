@@ -1,7 +1,7 @@
 package com.china317.myspringboot.service;
 
 import com.china317.myspringboot.entity.Person;
-import com.china317.myspringboot.repository.PersonRepository;
+import com.china317.myspringboot.repository.PersonDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PersonService {
     @Autowired
-    PersonRepository personRepository;
+    PersonDao personDao;
     
     public Person save(Person person){
-       return personRepository.save(person);
+       return personDao.save(person);
     }
 
     public Person findOne(Long id){
-        return personRepository.findOne(id);
+        return personDao.findOne(id);
     }
 }

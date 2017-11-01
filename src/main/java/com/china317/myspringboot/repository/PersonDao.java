@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by lx-dong on 2017/10/27.
  */
-public interface PersonRepository extends CrudRepository<Person, Long> {
+public interface PersonDao extends CrudRepository<Person, Long> {
 
 }
