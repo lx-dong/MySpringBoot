@@ -1,6 +1,6 @@
 package com.china317.myspringboot.web.filter;
 
-import com.china317.myspringboot.entity.User;
+import com.china317.myspringboot.entity.first.User;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.slf4j.Logger;

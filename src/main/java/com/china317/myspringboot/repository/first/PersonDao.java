@@ -1,6 +1,6 @@
-package com.china317.myspringboot.repository;
+package com.china317.myspringboot.repository.first;
 
-import com.china317.myspringboot.entity.Person;
+import com.china317.myspringboot.entity.first.Person;
 import org.springframework.data.repository.CrudRepository;
 
 /**

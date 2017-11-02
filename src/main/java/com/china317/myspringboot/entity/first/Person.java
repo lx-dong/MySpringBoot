@@ -1,4 +1,4 @@
-package com.china317.myspringboot.entity;
+package com.china317.myspringboot.entity.first;
 
 import javax.persistence.*;
 import java.io.Serializable;

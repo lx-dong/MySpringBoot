@@ -1,7 +1,7 @@
 package com.china317.myspringboot.web.controller;
 
-import com.china317.myspringboot.entity.Person;
-import com.china317.myspringboot.repository.PersonDao;
+import com.china317.myspringboot.entity.first.Person;
+import com.china317.myspringboot.repository.first.PersonDao;
 import com.china317.myspringboot.service.PersonService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

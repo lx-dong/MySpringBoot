@@ -1,7 +1,7 @@
 package com.china317.myspringboot.service;
 
-import com.china317.myspringboot.entity.Person;
-import com.china317.myspringboot.repository.PersonDao;
+import com.china317.myspringboot.entity.first.Person;
+import com.china317.myspringboot.repository.first.PersonDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
