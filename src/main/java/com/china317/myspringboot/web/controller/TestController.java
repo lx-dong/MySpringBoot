@@ -1,7 +1,9 @@
 package com.china317.myspringboot.web.controller;
 
 import com.china317.myspringboot.entity.first.Person;
+import com.china317.myspringboot.entity.second.Second;
 import com.china317.myspringboot.repository.first.PersonDao;
+import com.china317.myspringboot.repository.second.SecondDao;
 import com.china317.myspringboot.service.PersonService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,6 +29,8 @@ public class TestController {
     PersonService personService;
     @Autowired
     PersonDao personDao;
+    @Autowired
+    SecondDao secondDao;
 
     @RequestMapping("/index")
     public JsonNode helloWorld(HttpServletRequest request, @ModelAttribute("attAdd") String attAdd){
@@ -62,4 +66,16 @@ public class TestController {
         throw new Exception("my error");
     }
 
+    @RequestMapping("/saveSecond")
+    public Second saveSecond(){
+        Second s = new Second();
+        s.setName("second");
+        s.setValue("2");
+        return secondDao.save(s);
+    }
+
+    @RequestMapping("/listSecond")
+    public Object listSecond(){
+        return secondDao.findAll();
+    }
 }

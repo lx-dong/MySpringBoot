@@ -18,7 +18,7 @@ import javax.persistence.EntityManager;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"com.china317.myspringboot.repository.first"},
+@EnableJpaRepositories(basePackages = {"com.china317.myspringboot.repository.second"},
         entityManagerFactoryRef = "secondEntityManagerFactory",
         transactionManagerRef = "secondTransactionManager")
 public class SecondConfig {
@@ -26,15 +26,13 @@ public class SecondConfig {
     @Qualifier("secondEntityManagerFactory")
     private LocalContainerEntityManagerFactoryBean secondEntityManagerFactory;
 
-    @Primary
     @Bean
     public EntityManager secondEntityManager(){
         return secondEntityManagerFactory.getObject().createEntityManager();
     }
 
-    @Primary
     @Bean
-    public PlatformTransactionManager secondTransactonManager(){
+    public PlatformTransactionManager secondTransactionManager(){
         return new JpaTransactionManager(secondEntityManagerFactory.getObject());
     }
 }

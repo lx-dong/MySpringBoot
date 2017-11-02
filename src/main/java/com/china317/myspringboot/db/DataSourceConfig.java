@@ -22,7 +22,7 @@ public class DataSourceConfig {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "datasource.seconed")
+    @ConfigurationProperties(prefix = "datasource.second")
     public DataSource secondDataSource(){
         return DataSourceBuilder.create().build();
     }

@@ -36,7 +36,7 @@ public class PrimaryConfig {
 
     @Primary
     @Bean
-    public PlatformTransactionManager primaryTransactonManager(){
+    public PlatformTransactionManager primaryTransactionManager(){
         return new JpaTransactionManager(primaryEntityManagerFactory.getObject());
     }
 }

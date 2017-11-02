@@ -5,9 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
 import javax.sql.DataSource;
 import java.util.Map;
@@ -28,24 +29,25 @@ public class EntityManagerFactoryConfig {
         return jpaProperties.getHibernateProperties(dataSource);
     }
 
-    @Autowired
+    @Primary
+    @Bean
     public LocalContainerEntityManagerFactoryBean primaryEntityManagerFactory
             (EntityManagerFactoryBuilder builder, @Qualifier("primaryDataSource")DataSource primaryDataSource){
         return builder
                 .dataSource(primaryDataSource)
                 .packages("com.china317.myspringboot.entity.first")
-                .persistenceUnit("first")
+                .persistenceUnit("primaryPersistenceUnit")
                 .properties(getVendorProperties(primaryDataSource))
                 .build();
     }
 
-    @Autowired
+    @Bean
     public LocalContainerEntityManagerFactoryBean secondEntityManagerFactory
             (EntityManagerFactoryBuilder builder, @Qualifier("secondDataSource")DataSource secondDataSource){
         return builder
                 .dataSource(secondDataSource)
-                .packages("com.china317.myspringboot.entity.first")
-                .persistenceUnit("second")
+                .packages("com.china317.myspringboot.entity.second")
+                .persistenceUnit("secondPersistenceUnit")
                 .properties(getVendorProperties(secondDataSource))
                 .build();
 
