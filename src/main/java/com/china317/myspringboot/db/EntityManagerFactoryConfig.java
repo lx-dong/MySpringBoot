@@ -1,5 +1,6 @@
 package com.china317.myspringboot.db;
 
+import org.hibernate.cfg.ImprovedNamingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
@@ -22,6 +23,8 @@ public class EntityManagerFactoryConfig {
     private JpaProperties jpaProperties;
 
     private Map<String, String> getVendorProperties(DataSource dataSource){
+        jpaProperties.getHibernate().setNamingStrategy(ImprovedNamingStrategy.class); // 字段命名映射规则
+
         return jpaProperties.getHibernateProperties(dataSource);
     }
 

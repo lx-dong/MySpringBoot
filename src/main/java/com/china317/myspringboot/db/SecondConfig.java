@@ -12,7 +12,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManager;
-import javax.sql.DataSource;
 
 /**
  * Created by lx-dong on 2017/11/2.
@@ -20,23 +19,22 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"com.china317.myspringboot.repository.first"},
-        entityManagerFactoryRef = "primaryEntityManagerFactory",
-        transactionManagerRef = "primaryTransactionManager")
-public class PrimaryConfig {
+        entityManagerFactoryRef = "secondEntityManagerFactory",
+        transactionManagerRef = "secondTransactionManager")
+public class SecondConfig {
     @Autowired
-    @Qualifier("primaryEntityManagerFactory")
-    private LocalContainerEntityManagerFactoryBean primaryEntityManagerFactory;
+    @Qualifier("secondEntityManagerFactory")
+    private LocalContainerEntityManagerFactoryBean secondEntityManagerFactory;
 
     @Primary
     @Bean
-    public EntityManager primaryEntityManager(){
-        return primaryEntityManagerFactory.getObject().createEntityManager();
+    public EntityManager secondEntityManager(){
+        return secondEntityManagerFactory.getObject().createEntityManager();
     }
 
-
     @Primary
     @Bean
-    public PlatformTransactionManager primaryTransactonManager(){
-        return new JpaTransactionManager(primaryEntityManagerFactory.getObject());
+    public PlatformTransactionManager secondTransactonManager(){
+        return new JpaTransactionManager(secondEntityManagerFactory.getObject());
     }
 }
